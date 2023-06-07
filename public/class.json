@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "class_name": "Soccer Camp",
+      "image": "https://example.com/soccer_camp.png",
+      "description": "Join our soccer camp and learn from professional players. Develop your skills and techniques in a fun and friendly environment.",
+      "start_date": "2023-07-01",
+      "available_slots": 20,
+      "duration": "1 week",
+      "location": "Central Park",
+      "price": "$200",
+      "age_range": "8-12"
+    },
+    {
+      "id": 2,
+      "class_name": "Basketball Camp",
+      "image": "https://example.com/basketball_camp.png",
+      "description": "Come join our basketball camp and improve your dribbling, shooting, and passing skills. Our experienced coaches will help you take your game to the next level!",
+      "start_date": "2023-07-15",
+      "available_slots": 10,
+      "duration": "2 weeks",
+      "location": "YMCA",
+      "price": "$300",
+      "age_range": "10-14"
+    },
+    {
+      "id": 3,
+      "class_name": "Swimming Camp",
+      "image": "https://example.com/swimming_camp.png",
+      "description": "Dive into our swimming camp and learn how to swim like a pro! Our certified instructors will teach you proper stroke technique and water safety skills so you can enjoy swimming for years to come.",
+      "start_date": "2023-08-01",
+      "available_slots": 15,
+      "duration": "1 week",
+      "location": "Community Pool",
+      "price": "$250",
+      "age_range": "6-12"
+    },
+    {
+        "id": 4,
+        "class_name": "Tennis Camp",
+        "image": "https://example.com/tennis_camp.png",
+        "description": "Join our tennis camp and learn from world-class tennis players. Improve your technique and master your serve in a fun and supportive environment.",
+        "start_date": "2023-07-08",
+        "available_slots": 12,
+        "duration": "2 weeks",
+        "location": "City Tennis Court",
+        "price": "$350",
+        "age_range": "12-18"
+      },
+      {
+        "id": 5,
+        "class_name": "Gymnastics Camp",
+        "image": "https://example.com/gymnastics_camp.png",
+        "description": "Come flip and tumble with us at our gymnastics camp! Learn new skills and perfect your form with our expert coaches.",
+        "start_date": "2023-07-22",
+        "available_slots": 8,
+        "duration": "1 week",
+        "location": "Local Gymnastics Center",
+        "price": "$400",
+        "age_range": "6-14"
+      },
+      {
+        "id": 6,
+        "class_name": "Volleyball Camp",
+        "image": "https://example.com/volleyball_camp.png",
+        "description": "Bump, set, spike your way to success at our volleyball camp! Join us for a week of fun and skill building on the court.",
+        "start_date": "2023-08-05",
+        "available_slots": 20,
+        "duration": "1 week",
+        "location": "Beach Volleyball Court",
+        "price": "$250",
+        "age_range": "10-16"
+      }
+  ]
