@@ -1,16 +1,24 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../Hooks/useAuth';
 
 function SignUp() {
-    const { createUser } = useAuth()
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile } = useAuth()
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
+    const navigate = useNavigate()
     const onSubmit = data => {
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+                .then(()=>{
+                    reset();
+                    console.log('user created')
+                    navigate('/');
+                })
+                .catch(error =>console.log(error.message))
             })
     };
 

@@ -53,17 +53,20 @@ const NavBar = () => {
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
-                                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                                    {
+                                        user? <><img src={user?.photoURL} alt="" /></> : <> <img src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} /></>
+                                    }
+                                   
                                 </div>
                             </label>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black font-bold">
                                 <li>
                                     <a className="justify-between">
-                                        Profile
-                                        <span className="badge">New</span>
+                                        {user?.displayName}
+                                       
                                     </a>
                                 </li>
-                                <li><a>Settings</a></li>
+                               
                                 <li><button onClick={handleLogOut}>Logout</button></li>
                             </ul>
                         </div>
