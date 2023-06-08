@@ -1,7 +1,7 @@
 
 
 const InstructorCard = ( data ) => {
-    console.log(data.data)
+
     const NewData = data.data;
     // const { instructor_image, class_name,instructor_description,total_enrolled_student} = data;
     return (

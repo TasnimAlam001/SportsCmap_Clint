@@ -12,8 +12,7 @@ const PopularInstructor = () => {
 
     const instructor = useInstructor();
     const popularInstructor = instructor[1];
-    console.log(popularInstructor)
-    console.log(popularInstructor[0])
+
 
 
     return (

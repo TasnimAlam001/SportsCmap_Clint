@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 // import { FaUserLock } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import './Login.css'
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
