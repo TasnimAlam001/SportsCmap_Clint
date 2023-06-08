@@ -1,22 +1,58 @@
 // import { useState } from 'react';
 // import { FaUserLock } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
+import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 function Login() {
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
+    const {signIn} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // handle login logic here
-    // };
+
+    const from = location.state?.from?.pathname || "/";
+
+    
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Logged In',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log("Error :", error.message)
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: `ERROR: ${error.message} `
+                  })
+            })
+    }
 
     return (
-        <div className='bgImg min-h-screen flex items-center justify-center'>
+        <div className='bgImg min-h-screen flex items-center'>
 
 
-            <form className=" w-1/3 bg-transparent shadow-2xl rounded-lg m-5 ">
+            <form onSubmit={handleLogin} className=" w-1/3 bg-transparent shadow-2xl rounded-lg m-5 ">
                 <div className="hero-content flex-col lg:flex-row-reverse ">
                     
                     <div className="card flex-shrink-0 w-full ">

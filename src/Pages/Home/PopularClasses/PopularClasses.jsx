@@ -6,7 +6,6 @@ import './PopularClasses.css'
 const PopularClasses = () => {
     const classes = useClass()
     const popularClasses = classes[1];
-    console.log(popularClasses)
 
     return (
 
