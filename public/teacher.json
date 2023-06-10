@@ -1,6 +1,7 @@
 [
     {
       "name": "John Doe",
+      "email": "doe@gmai.com",
       "class_name": "Basketball",
       "instructor_description": "Experienced basketball coach with over 10 years of coaching experience at both high school and college level.",
       "total_enrolled_student": 20,
@@ -8,6 +9,7 @@
     },
     {
       "name": "Jane Smith",
+      "email": "jane@gmai.com",
       "class_name": "Swimming",
       "instructor_description": "Certified swim instructor with 5 years of teaching experience. Specializes in teaching children of all ages and abilities.",
       "total_enrolled_student": 15,
@@ -15,20 +17,24 @@
     },
     {
       "name": "David Lee",
+      "email": "lee@gmai.com",
       "class_name": "Soccer",
+
       "instructor_description": "Former professional soccer player with extensive coaching experience. Focuses on developing fundamental skills and team strategies.",
       "total_enrolled_student": 25,
       "instructor_image": "https://content.thecoachingmanual.com/hubfs/Coaching%20Manual-244-min.jpg"
     },
     {
         "name": "Mike Johnson",
+        "email": "mike@gmai.com",
         "class_name": "Tennis",
         "instructor_description": "Professional tennis player with multiple tournament wins. Has been coaching for 5 years and focuses on fundamentals and technique.",
         "total_enrolled_student": 10,
         "instructor_image": "https://i0.wp.com/www.jobsinsports.com/blog/wp-content/uploads/2021/05/how-to-become-a-great-tennis-coach-featured-jobs-in-sports.jpg?resize=770%2C434&ssl=1"
       },
       {
-        "name": "Samantha Lee",
+        "name": "Mohammad Salahuddin",
+        "email": "shalahuddin@gmai.com",
         "class_name": "Cricket",
         "instructor_description": "Certified Cricket instructor with experience teaching children of all ages and abilities. Emphasizes safety and proper form.",
         "total_enrolled_student": 12,
@@ -36,6 +42,7 @@
       },
       {
         "name": "Chris Anderson",
+        "email": "chirs@gmai.com",
         "class_name": "Baseball",
         "instructor_description": "Former professional baseball player with over 15 years of coaching experience. Focuses on developing individual skills and team strategy.",
         "total_enrolled_student": 18,

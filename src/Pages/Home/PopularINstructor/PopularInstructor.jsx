@@ -10,8 +10,8 @@ const PopularInstructor = () => {
         Aos.init({})
     })
 
-    const instructor = useInstructor();
-    const popularInstructor = instructor[1];
+    const [instructor] = useInstructor();
+    // const popularInstructor = instructor;
 
 
 
@@ -23,32 +23,32 @@ const PopularInstructor = () => {
                 <div data-aos="fade-right"
                     data-aos-offset="300"
                     data-aos-duration="1000">
-                    <InstructorCard data={popularInstructor[0]}></InstructorCard>
+                    <InstructorCard data={instructor[0]}></InstructorCard>
                 </div>
                 <div data-aos="fade-down"
                     data-aos-easing="linear"
                     data-aos-duration="1000">
-                    <InstructorCard data={popularInstructor[1]}></InstructorCard>
+                    <InstructorCard data={instructor[1]}></InstructorCard>
                 </div>
                 <div data-aos="fade-left"
                     data-aos-offset="300"
                     data-aos-duration="1000">
-                    <InstructorCard data={popularInstructor[2]}></InstructorCard>
+                    <InstructorCard data={instructor[2]}></InstructorCard>
                 </div >
                 <div data-aos="fade-right"
                     data-aos-offset="300"
                     data-aos-duration="1000">
-                    <InstructorCard data={popularInstructor[3]}></InstructorCard>
+                    <InstructorCard data={instructor[3]}></InstructorCard>
                 </div>
                 <div data-aos="fade-up"
                     data-aos-easing="linear"
                     data-aos-duration="1000">
-                    <InstructorCard data={popularInstructor[4]}></InstructorCard>
+                    <InstructorCard data={instructor[4]}></InstructorCard>
                 </div>
                 <div data-aos="fade-left"
                     data-aos-offset="300"
                     data-aos-duration="1000">
-                    <InstructorCard data={popularInstructor[5]}></InstructorCard>
+                    <InstructorCard data={instructor[5]}></InstructorCard>
                 </div>
 
 

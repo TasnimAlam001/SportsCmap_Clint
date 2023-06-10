@@ -4,8 +4,10 @@ import ClassCard from "./ClassCard";
 import './PopularClasses.css'
 
 const PopularClasses = () => {
-    const classes = useClass()
-    const popularClasses = classes[1];
+    const [classes] = useClass();
+    // const popularClasses = classes[1];
+    console.log(classes)
+    // console.log(popularClasses)
 
     return (
 
@@ -14,7 +16,7 @@ const PopularClasses = () => {
 
             <div className="cls bg-fixed grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-32">
                 {
-                    popularClasses.map(cls => <ClassCard
+                    classes.map(cls => <ClassCard
 
                         key={cls._id}
                         cls={cls}

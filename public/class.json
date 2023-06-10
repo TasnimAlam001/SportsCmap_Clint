@@ -2,6 +2,7 @@
     {
       "id": 1,
       "class_name": "Soccer Camp",
+      "instructor_name": "John Doe",
       "image": "https://images.squarespace-cdn.com/content/v1/566962bb57eb8d68a43e4b29/23b1919d-00d6-4303-969f-4fa6c1c1aae1/Chelsea-Boys-Camp-UK.jpg",
       "description": "Join our soccer camp and learn from professional players. Develop your skills and techniques in a fun and friendly environment.",
       "start_date": "2023-07-01",
@@ -14,6 +15,7 @@
     {
       "id": 2,
       "class_name": "Basketball Camp",
+      "instructor_name": "John Doe",
       "image": "https://images.squarespace-cdn.com/content/v1/566962bb57eb8d68a43e4b29/ef47ee70-0fdc-4156-a5d7-61c8340cc5e7/summer-basketball-england?format=1000w",
       "description": "Come join our basketball camp and improve your dribbling, shooting, and passing skills. Our experienced coaches will help you take your game to the next level!",
       "start_date": "2023-07-15",
@@ -26,6 +28,7 @@
     {
       "id": 3,
       "class_name": "Swimming Camp",
+      "instructor_name": "Mike Johnson",
       "image": "https://www.momswhothink.com/wp-content/uploads/2023/03/iStock-1372461224.jpg",
       "description": "Dive into our swimming camp and learn how to swim like a pro! Our certified instructors will teach you proper stroke technique and water safety skills so you can enjoy swimming for years to come.",
       "start_date": "2023-08-01",
@@ -38,6 +41,7 @@
     {
         "id": 4,
         "class_name": "Tennis Camp",
+        "instructor_name": "Mike Johnson",
         "image": "https://www.esfcamps.com/chestnuthill/wp-content/uploads/sites/10/2016/11/page-tennis-7-1024x632.jpg",
         "description": "Join our tennis camp and learn from world-class tennis players. Improve your technique and master your serve in a fun and supportive environment.",
         "start_date": "2023-07-08",
@@ -50,6 +54,7 @@
       {
         "id": 5,
         "class_name": "Cricket Camp",
+        "instructor_name": "Mohammad Shalauddin",
         "image": "https://shop.australiansportscamps.com.au/wp-content/uploads/2017/03/Cricket-Coaching-in-Melbourne.jpg",
         "description": "Come flip and tumble with us at our Cricket camp! Learn new skills and perfect your form with our expert coaches.",
         "start_date": "2023-07-22",
@@ -62,6 +67,7 @@
       {
         "id": 6,
         "class_name": "Volleyball Camp",
+        "instructor_name": "Jordan",
         "image": "https://www.siprograms.com/assets/Sports/volleyball/volleyball-hero.jpg",
         "description": "Bump, set, spike your way to success at our volleyball camp! Join us for a week of fun and skill building on the court.",
         "start_date": "2023-08-05",
