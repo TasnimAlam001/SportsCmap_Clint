@@ -7,6 +7,8 @@ import PrivateRoutes from "./PrivateRoutes";
 import Secrect from "../Pages/Secrect";
 import Classes from "../Pages/Classes/Classes";
 import Instructor from "../Pages/Instructor/Instructor";
+import Dashboard from "../LayOut/Dashboard";
+import MySelectedClasses from "../Pages/Dashboard/StudentDashboard/MySelectedClasses";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,16 @@ export const router = createBrowserRouter([
         path:'/instructor',
         element:<Instructor></Instructor>
       }
+    ]
+  },
+  {
+    path:'/dashboard',
+    element:<Dashboard></Dashboard>,
+    children: [
+      {
+        path:'mySelectedClasses',
+        element:<MySelectedClasses></MySelectedClasses>
+      },
     ]
   }
 ]);

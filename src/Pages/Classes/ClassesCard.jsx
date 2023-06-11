@@ -1,6 +1,70 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 
-const ClassesCard = ({cls}) => {
+const ClassesCard = ({ cls }) => {
+
+    const [disabled, setDisabled] = useState(false);
+
+    const { user } = useAuth();
+    const navigate = useNavigate()
+    const location = useLocation();
+
+    const handleSelectedClass = Scls => {
+        console.log(Scls);
+        // if(user){
+        //     fetch('http://localhost:5000/selectedClass')
+        //     .then(res=>res.json())
+        //     .then(data=>{
+        //         if(data.insertedId){
+        //         }
+        //     })
+        // }
+        if (user && user.email) {
+            const selectedClass = { selectedClassId: cls._id,class_name:cls.class_name , instructor_name:cls.instructor_name, image:cls.image, price:cls.price, email: user.email }
+            fetch('http://localhost:5000/selectedClass', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(selectedClass)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        // refetch()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'You Successfully selected the class',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
+                        setDisabled(true);
+
+                    }
+                })
+        } else {
+            Swal.fire({
+                title: 'Please Login to select the class',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'let`s Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/login", { state: { from: location } });
+                }
+            })
+        }
+
+    }
+
+
     return (
         <div className="max-w-md mx-auto h-[700px] bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl relative" >
             <div className="" >
@@ -36,13 +100,13 @@ const ClassesCard = ({cls}) => {
                             <span className="font-bold">Age Range:</span> {cls.age_range}
                         </div>
                     </div>
-                    
-                </div>
-                
 
-              
+                </div>
+
+
+
             </div>
-            <div className="absolute bottom-0 w-full mb-1"><button className="btn btn-outline btn-ghost w-full">Select Class</button></div>
+            <div className="absolute bottom-0 w-full mb-1"><button disabled={disabled} onClick={() => handleSelectedClass(cls)} className="btn btn-outline btn-ghost w-full">Select Class</button></div>
 
         </div>
     );
