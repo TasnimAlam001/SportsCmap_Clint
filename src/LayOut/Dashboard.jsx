@@ -1,5 +1,5 @@
 // import { NavLink, Outlet } from "react-router-dom";
-import { FaBook, FaBookOpen, FaBookmark, FaHome, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
+import { FaBook, FaBookOpen, FaBookmark, FaHome, FaUserSecret, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
 
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content ">
 
                         {
                             isAdmin && <>
@@ -37,13 +37,19 @@ const Dashboard = () => {
                         {
                             isStudent && <>
 
-                                <li><NavLink to="/dashboard/mySelectedClasses"><FaBookmark></FaBookmark> My Selected Classes</NavLink></li>
+                                <li className=""><NavLink to="/dashboard/mySelectedClasses"><FaBookmark></FaBookmark> My Selected Classes</NavLink></li>
                                 <li><NavLink to="/dashboard/home"><FaBookOpen></FaBookOpen> My Enrolled Classes</NavLink></li>
                                 <li><NavLink to="/dashboard/home"><FaWallet></FaWallet> Payment History</NavLink></li>
 
 
                             </>
                         }
+
+                        <div className="divider"></div>
+                        <li><NavLink to="/"><FaHome></FaHome>Home</NavLink></li>
+                        <li><NavLink to="/classes"><FaBookOpen></FaBookOpen> Classes</NavLink></li>
+                        <li><NavLink to="/instructor"><FaUserSecret></FaUserSecret> Instructors</NavLink></li>
+                        
 
 
 

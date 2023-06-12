@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useSelectedClass from "../../Hooks/useSelectedClass";
 
 
 const ClassesCard = ({ cls }) => {
@@ -9,21 +10,21 @@ const ClassesCard = ({ cls }) => {
     const [disabled, setDisabled] = useState(false);
 
     const { user } = useAuth();
+    const [classes,refetch] = useSelectedClass()
     const navigate = useNavigate()
     const location = useLocation();
 
+
+   classes.map(seletedCls=>{
+    if(cls._id ===  seletedCls._id){
+        setDisabled(true);
+    }
+   })
+
     const handleSelectedClass = Scls => {
         console.log(Scls);
-        // if(user){
-        //     fetch('http://localhost:5000/selectedClass')
-        //     .then(res=>res.json())
-        //     .then(data=>{
-        //         if(data.insertedId){
-        //         }
-        //     })
-        // }
         if (user && user.email) {
-            const selectedClass = { selectedClassId: cls._id,class_name:cls.class_name , instructor_name:cls.instructor_name, image:cls.image, price:cls.price, email: user.email }
+            const selectedClass = { selectedClassId: cls._id, class_name:cls.class_name , instructor_name:cls.instructor_name, image:cls.image, price:cls.price, email: user.email }
             fetch('http://localhost:5000/selectedClass', {
                 method: 'POST',
                 headers: {
@@ -34,7 +35,7 @@ const ClassesCard = ({ cls }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        // refetch()
+                        refetch();
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -42,6 +43,7 @@ const ClassesCard = ({ cls }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        
 
                         setDisabled(true);
 

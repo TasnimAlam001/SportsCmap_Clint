@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from '../../../assets/Logo/SportsCampLogo.png'
 import useAuth from "../../../Hooks/useAuth";
+import useSelectedClass from "../../../Hooks/useSelectedClass";
 
 const NavBar = () => {
     const { user, LogOut } = useAuth();
-
-
+    const [selectedClass] = useSelectedClass();
 
 
     const handleLogOut = () => {
@@ -19,7 +19,20 @@ const NavBar = () => {
 
         <li><Link to="/">Home</Link></li>
         {
-            user && <li><Link to="/dashboard">Dashboard</Link></li>
+            user && <li><Link to="/dashboard/mySelectedClasses">Dashboard {
+
+                <small>
+                    {
+                        selectedClass && <div className="badge badge-secondary subscript">+{selectedClass.length || "0"}</div>
+                    }
+                    
+                    
+
+
+                </small>
+
+
+            } </Link></li>
         }
         <li><Link to="/instructor">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
@@ -54,27 +67,27 @@ const NavBar = () => {
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
                                     {
-                                        user? <><img src={user?.photoURL} alt="" /></> : <> <img src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} /></>
+                                        user ? <><img src={user?.photoURL} alt="" /></> : <> <img src={"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} /></>
                                     }
-                                   
+
                                 </div>
                             </label>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black font-bold">
                                 <li>
                                     <a className="justify-between">
                                         {user?.displayName}
-                                       
+
                                     </a>
                                 </li>
-                               
+
                                 <li><button onClick={handleLogOut}>Logout</button></li>
                             </ul>
                         </div>
                     </>
 
                         : <>
-                        <button className="btn btn-outline text-white btn-ghost"><Link to="/login" > Login</Link></button>
-                            
+                            <button className="btn btn-outline text-white btn-ghost"><Link to="/login" > Login</Link></button>
+
                         </>
                 }
 

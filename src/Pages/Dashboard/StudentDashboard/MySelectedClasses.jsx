@@ -1,16 +1,45 @@
 import { FaTrashAlt, FaWallet } from "react-icons/fa";
 import useSelectedClass from "../../../Hooks/useSelectedClass";
+import Swal from "sweetalert2";
 
 
 const MySelectedClasses = () => {
     const [classes, refetch] = useSelectedClass();
+    const total = classes.reduce((sum, item) => item.price + sum, 0);
 
     const handlePayment = cls => {
         console.log(cls);
     }
 
     const handleDelete = cls => {
-        console.log(cls)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You want to delete ${cls.name} from the Selected Class?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:5000/selectedClass/${cls._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                `${cls.name} has been deleted from the selected class.`,
+                                'success'
+                            )
+                        }
+                    })
+
+            }
+        })
     }
 
 
@@ -19,7 +48,13 @@ const MySelectedClasses = () => {
         <div className="w-full">
             <div className="p-12  rounded-lg ml-4">
 
-                <p className="text-3xl my-4">Total Selected Classes :{classes.length}</p>
+                <div className="text-center pb-5">
+                    <p className="text-3xl my-4">Total Selected Classes: {classes.length}</p>
+                    <div>
+                        <p>Total Amount : ${total}</p>
+                        <span> <button className="btn btn-outline" >Pay</button> </span>
+                    </div>
+                </div>
 
                 <div className="overflow-x-auto">
                     <table className="table w-full">
@@ -37,7 +72,7 @@ const MySelectedClasses = () => {
                         <tbody>
                             {
                                 classes.map((cls, index) => <tr key={cls._id} className="hover">
-                                    <th>{index}</th>
+                                    <th>{index + 1}</th>
                                     <td>
 
                                         <div className="flex items-center space-x-3">
@@ -48,15 +83,14 @@ const MySelectedClasses = () => {
                                             </div>
                                             <div>
                                                 <div className="font-bold">{cls.class_name}</div>
-                                                
                                             </div>
                                         </div>
                                     </td>
 
 
                                     <td>{cls.instructor_name}</td>
-                                    
-                                    <td>{cls.price}</td>
+
+                                    <td>${cls.price}</td>
                                     <td><button onClick={() => handlePayment(cls)} className="btn btn-ghost text-1xl bg-orange-400 text-white">
                                         <FaWallet></FaWallet>
                                         {

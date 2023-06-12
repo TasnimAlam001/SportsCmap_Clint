@@ -1,24 +1,76 @@
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 function SignUp() {
     const { createUser, updateUserProfile } = useAuth()
-    const { register, handleSubmit,reset, formState: { errors } } = useForm();
-    const navigate = useNavigate()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+
+    const from = location.state?.from?.pathname || "/";
+
+
+
     const onSubmit = data => {
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
-                .then(()=>{
-                    reset();
-                    console.log('user created')
-                    navigate('/');
+
+
+                    .then(() => {
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Successfully Signed up',
+                                        showClass: {
+                                            popup: 'animate__animated animate__fadeInDown'
+                                        },
+                                        hideClass: {
+                                            popup: 'animate__animated animate__fadeOutUp'
+                                        }
+                                    });
+                                    navigate(from, { replace: true });
+                                }
+                            })
+
+
+                    })
+
+
+
+
+
+
+
+
+            })
+            .catch(error => {
+                console.log(error.message)
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: `ERROR: ${error.message} `
                 })
-                .catch(error =>console.log(error.message))
+
             })
     };
 
