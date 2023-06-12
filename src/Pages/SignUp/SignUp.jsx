@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../Componenets/SocialLogin/SocialLogin';
 
 function SignUp() {
     const { createUser, updateUserProfile } = useAuth()
@@ -24,7 +25,7 @@ function SignUp() {
 
 
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email }
+                        const saveUser = { name: data.name, email: data.email, role:"user"}
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -52,12 +53,6 @@ function SignUp() {
 
 
                     })
-
-
-
-
-
-
 
 
             })
@@ -125,6 +120,7 @@ function SignUp() {
                                 <input className="btn btn-primary" type="submit" value="SignUp" />
                             </div>
                             <p className='text-center font-bold'><small>Already Have an account? <Link to="/login">LogIn</Link></small></p>
+                            <SocialLogin></SocialLogin>
 
                         </div>
                     </div>

@@ -6,8 +6,10 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
 
-    const isAdmin = false;
-    const isStudent = true;
+
+    // TODO:njvljv
+    const isAdmin = true;
+    const isStudent = false;
 
     return (
         <div>
@@ -30,7 +32,7 @@ const Dashboard = () => {
                                 <li><NavLink to="/dashboard/additem"><FaUtensils></FaUtensils>Add Items</NavLink></li>
                                 <li><NavLink to="/dashboard/manageitem"><FaWallet></FaWallet>Manage Items</NavLink></li>
                                 <li><NavLink to="/dashboard/history"><FaBook></FaBook>Manage Bookings</NavLink></li>
-                                <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers>All Users</NavLink></li>
+                                <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers>All Users</NavLink></li>
                             </>
 
                         }

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate} from 'react-router-dom';
 import './Login.css'
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../Componenets/SocialLogin/SocialLogin';
 
 function Login() {
     const {signIn} = useAuth();
@@ -78,6 +79,8 @@ function Login() {
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
                             <p className='font-bold text-center'><small>New Here ? <Link to="/signUp">SignUp</Link></small></p>
+
+                            <SocialLogin></SocialLogin>
                             
                         </div>
                     </div>
