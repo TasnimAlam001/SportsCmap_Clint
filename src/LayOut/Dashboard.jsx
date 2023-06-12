@@ -2,13 +2,14 @@
 import { FaBook, FaBookOpen, FaBookmark, FaHome, FaUserSecret, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
 
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/isAdmin";
 
 
 const Dashboard = () => {
 
 
     // TODO:njvljv
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
     const isStudent = false;
 
     return (
