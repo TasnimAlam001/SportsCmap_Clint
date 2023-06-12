@@ -1,19 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import { FaTrashAlt, FaUserSecret, FaUserShield } from "react-icons/fa";
+import { FaCheckCircle, FaTrashAlt, FaUserSecret, FaUserShield } from "react-icons/fa";
 
 const AllUsers = () => {
 
-    
+
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users')
         return res.json();
     })
     console.log(users);
 
-    const handleMakeInstructor = (user)=>{
+    const handleMakeInstructor = (user) => {
         console.log(user);
-        
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire(
+                        'Done !',
+                        `${user.name} has added as an instructor.`,
+                        'success'
+                    )
+                }
+            })
+
     }
 
     const handleMakeAdmin = (user) => {
@@ -40,7 +54,7 @@ const AllUsers = () => {
     }
     return (
         <div className="w-full">
-            
+
 
             <div className="p-12  rounded-lg ml-4">
 
@@ -54,6 +68,7 @@ const AllUsers = () => {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Make Admin</th>
                                 <th>Make Instructor</th>
                                 <th>Action</th>
@@ -62,17 +77,18 @@ const AllUsers = () => {
                         <tbody>
                             {
                                 users.map((user, index) => <tr key={user._id} className="hover">
-                                    <th>{index+1}</th>
+                                    <th>{index + 1}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
+                                    <td>{user.role}</td>
                                     <td><button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost text-1xl bg-orange-400 text-white">
                                         {
-                                            user.role === 'admin' ? 'admin' : <FaUserShield></FaUserShield>
+                                            user.role === 'admin' ? <span className="text-blue-600 text-2xl "> <FaCheckCircle></FaCheckCircle></span>  : <FaUserShield></FaUserShield>
                                         }
                                     </button> </td>
                                     <td><button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost text-1xl bg-orange-400 text-white">
                                         {
-                                            user.role === 'admin' ? 'admin' : <FaUserSecret></FaUserSecret>
+                                            user.role === 'instructor' ?  <span className="text-blue-600 text-2xl "> <FaCheckCircle></FaCheckCircle></span>  : <FaUserSecret></FaUserSecret>
                                         }
                                     </button> </td>
                                     <td><button onClick={() => handleDelete(user)} className="btn btn-ghost text-1xl bg-red-600 text-white"><FaTrashAlt></FaTrashAlt></button></td>
