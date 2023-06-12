@@ -3,14 +3,20 @@ import { FaBook, FaBookOpen, FaBookmark, FaHome, FaUserSecret, FaUsers, FaUtensi
 
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/isAdmin";
+import useInstructor from "../Hooks/isInstructor";
+
+import useUser from "../Hooks/isUser";
 
 
 const Dashboard = () => {
+   
 
 
     // TODO:njvljv
+    const [isInstructor] = useInstructor();
     const [isAdmin] = useAdmin();
-    const isStudent = false;
+    const [isUser] = useUser();
+    
 
     return (
         <div>
@@ -30,15 +36,26 @@ const Dashboard = () => {
                             isAdmin && <>
 
                                 <li><NavLink to="/dashboard/home"><FaHome></FaHome>Admin Home</NavLink></li>
-                                <li><NavLink to="/dashboard/additem"><FaUtensils></FaUtensils>Add Items</NavLink></li>
-                                <li><NavLink to="/dashboard/manageitem"><FaWallet></FaWallet>Manage Items</NavLink></li>
-                                <li><NavLink to="/dashboard/history"><FaBook></FaBook>Manage Bookings</NavLink></li>
+                           
+                                
+                                <li><NavLink to="/dashboard/history"><FaBook></FaBook>Manage Classes</NavLink></li>
                                 <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers>All Users</NavLink></li>
                             </>
 
                         }
                         {
-                            isStudent && <>
+                            isInstructor && <>
+
+                                <li><NavLink to="/dashboard/home"><FaHome></FaHome>Instructor Home</NavLink></li>
+                                <li><NavLink to="/dashboard/additem"><FaUtensils></FaUtensils>Add Class</NavLink></li>
+                                
+                                <li><NavLink to="/dashboard/history"><FaBook></FaBook>My Classes</NavLink></li>
+                              
+                            </>
+
+                        }
+                        {
+                            isUser && <>
 
                                 <li className=""><NavLink to="/dashboard/mySelectedClasses"><FaBookmark></FaBookmark> My Selected Classes</NavLink></li>
                                 <li><NavLink to="/dashboard/home"><FaBookOpen></FaBookOpen> My Enrolled Classes</NavLink></li>
