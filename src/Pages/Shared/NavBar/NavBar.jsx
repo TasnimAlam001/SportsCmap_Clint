@@ -13,7 +13,7 @@ const NavBar = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
-
+    //TODO: add helmet
 
     const handleLogOut = () => {
         LogOut()
@@ -47,7 +47,7 @@ const NavBar = () => {
         }
         <li><Link to="/instructor">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/secret">Secret</Link></li>
+       
 
     </>
 

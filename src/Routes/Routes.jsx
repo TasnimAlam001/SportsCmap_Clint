@@ -4,7 +4,6 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/LogIn/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoutes from "./PrivateRoutes";
-import Secrect from "../Pages/Secrect";
 import Classes from "../Pages/Classes/Classes";
 import Instructor from "../Pages/Instructor/Instructor";
 import Dashboard from "../LayOut/Dashboard";
@@ -13,6 +12,7 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../Pages/Dashboard/Instructor/MyClasses";
+import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
 
 export const router = createBrowserRouter([
   {
@@ -22,10 +22,6 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
-      },
-      {
-        path: '/secret',
-        element: <PrivateRoutes><Secrect></Secrect></PrivateRoutes>
       },
       {
         path: '/login',
@@ -64,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path:'myClasses',
         element:<MyClasses></MyClasses>
+      },
+      {
+        path:'manageClasses',
+        element:<ManageClasses></ManageClasses>
       },
     ]
   }

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../Hooks/useAuth";
-import useAxiosSecure from "../../../../Hooks/iseAxiousSecure";
+import useAxiosSecure from "../../../../Hooks/useAxiousSecure";
 import Swal from "sweetalert2";
 
 const AddClass = () => {
