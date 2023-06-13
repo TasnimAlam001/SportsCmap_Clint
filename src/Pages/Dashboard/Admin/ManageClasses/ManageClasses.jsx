@@ -18,23 +18,24 @@ const ManageClasses = () => {
         console.log(cls);
         fetch(`http://localhost:5000/newClass/approve/${cls._id}`, {
             method: 'PATCH'
+            
         })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
                     refetch();
                     axiosSecure.post('/classes', cls)
-                    .then(data => {
-                        console.log('after posting ', data.data)
-                        if(data.data.insertedId){
-                            Swal.fire(
-                                'Done !',
-                                `${cls.class_name} has added approved added to the class list.`,
-                                'success'
-                            )
-                        }
-                    })
-                    
+                        .then(data => {
+                            console.log('after posting ', data.data)
+                            if (data.data.insertedId) {
+                                Swal.fire(
+                                    'Done !',
+                                    `${cls.class_name} has added approved added to the class list.`,
+                                    'success'
+                                )
+                            }
+                        })
+
 
                 }
             })
@@ -54,20 +55,48 @@ const ManageClasses = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/newClass/reject/${cls._id}`, {
-                    method: 'PATCH'
+                Swal.fire({
+                    title: 'Please give instructor some feedback',
+                    input: 'text',
+                    inputAttributes: {
+                        autocapitalize: 'off'
+                    },
+                    showCancelButton: true,
+                    confirmButtonText: 'Submit',
+                    showLoaderOnConfirm: true,
+                   
+                    allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        console.log(result.value)
+                        const message = result.value;
+                        fetch(`http://localhost:5000/newClass/reject/${cls._id}`, {
+                            method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify({
+                            message: {message}
+                          })
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.modifiedCount) {
+                                    refetch();
+                                    Swal.fire(
+                                        'Done !',
+                                        `Your feedback is send to the Instructor and ${cls.class_name} has added rejected.`,
+                                        'success'
+                                    )
+                                }
+                            })
+                    }
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.modifiedCount) {
-                            refetch();
-                            Swal.fire(
-                                'Done !',
-                                `${cls.class_name} has added rejected.`,
-                                'success'
-                            )
-                        }
-                    })
+
+
+
+
+
             }
         })
 
