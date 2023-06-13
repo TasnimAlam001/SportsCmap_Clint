@@ -1,10 +1,47 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../Hooks/useAuth";
+import useAxiosSecure from "../../../../Hooks/iseAxiousSecure";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
     const { user } = useAuth();
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const [axiosSecure]= useAxiosSecure();
+    const { register, handleSubmit,reset, formState: { errors } } = useForm();
+
+
+
+
+    const onSubmit = data => {
+        const newData = {class_name:data.class_name, instructor_name: user?.displayName, email:user.email , image: data.class_image, description: data.description, start_date:data.date, available_slots: parseInt(data.slots), duration: data.duration, location: data.location, price: parseFloat(data.price), age_range: data.ageRange}
+        
+        axiosSecure.post('/newClass', newData)
+                .then(data => {
+                    console.log('after posting ', data.data)
+                    if(data.data.insertedId){
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Class added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+        
+        console.log(newData)};
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className="w-full">
             <form onSubmit={handleSubmit(onSubmit)} className="w-full shadow-2xl rounded-lg m-5 ">
@@ -91,22 +128,16 @@ const AddClass = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text font-bold ">Available Slots</span>
+                                        <span className="label-text font-bold ">Location</span>
                                     </label>
-                                    <input type="number" placeholder="Available Slots" {...register("slots", { required: true })} className="input input-bordered" />
-                                    {errors.slots && <span className="text-red-600">This field is required</span>}
+                                    <input type="text" placeholder="Location" {...register("location", { required: true })} className="input input-bordered" />
+                                    {errors.location && <span className="text-red-600">This field is required</span>}
                                 </div>
 
                             </div>
 
 
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text font-bold ">Location</span>
-                                </label>
-                                <input type="text" placeholder="Location" {...register("location", { required: true })} className="input input-bordered" />
-                                {errors.location && <span className="text-red-600">This field is required</span>}
-                            </div>
+
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text font-bold ">Description</span>
@@ -114,7 +145,7 @@ const AddClass = () => {
                                 <textarea type="text" placeholder="Description" {...register("description", { required: true })} className="input input-bordered h-20" />
                                 {errors.description && <span className="text-red-600">This field is required</span>}
                             </div>
-                            
+
 
 
                             <div className="form-control mt-6">
