@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import logo from '../../../assets/Logo/SportsCampLogo.png'
 import useAuth from "../../../Hooks/useAuth";
 import useSelectedClass from "../../../Hooks/useSelectedClass";
+import useUser from "../../../Hooks/isUser";
+import useAdmin from "../../../Hooks/isAdmin";
+import useInstructor from "../../../Hooks/isInstructor";
 
 const NavBar = () => {
     const { user, LogOut } = useAuth();
     const [selectedClass] = useSelectedClass();
+    const [isUser]= useUser();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
 
 
     const handleLogOut = () => {
@@ -19,18 +26,22 @@ const NavBar = () => {
 
         <li><Link to="/">Home</Link></li>
         {
-            user && <li><Link to="/dashboard/mySelectedClasses">Dashboard {
+            
+                user && <li><Link to={
+                    isAdmin ? "/dashboard/allUsers" :  isInstructor ?  "/dashboard/myClasses": "/dashboard/mySelectedClasses"
+                    
+                    
+                
+                    
+                }>Dashboard
 
+             {
+                isUser &&
                 <small>
                     {
                         selectedClass && <div className="badge badge-secondary subscript">+{selectedClass.length || "0"}</div>
                     }
-                    
-                    
-
-
                 </small>
-
 
             } </Link></li>
         }
