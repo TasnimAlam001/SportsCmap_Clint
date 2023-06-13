@@ -1,5 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiousSecure";
+import Swal from "sweetalert2";
+import { FaCheckCircle } from "react-icons/fa";
+
 
 
 const ManageClasses = () => {
@@ -9,6 +12,34 @@ const ManageClasses = () => {
         const res = await axiosSecure('/newClass')
         return res.data;
     })
+
+
+    const handleApprove = (cls) => {
+        console.log(cls);
+        fetch(`http://localhost:5000/newClass/approve/${cls._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire(
+                        'Done !',
+                        `${cls.name} has added approved.`,
+                        'success'
+                    )
+
+                }
+            })
+
+    }
+
+
+
+
+
+
+
 
     return (
         <div className="w-full">
@@ -57,14 +88,35 @@ const ManageClasses = () => {
                                     <td>${cls.price}</td>
 
                                     <td>{
-                                        cls.status ? cls.status : "pending"
+                                        cls.status
                                     } </td>
 
                                     <td>
-                                        <button className="btn btn-primary">Approve</button>
+                                        
+                                        {
+                                            cls.status === "rejected" && <button disabled className="btn btn-primary">Approve</button> }
+                                        {
+                                            cls.status === "approved" && <span className="text-blue-600 text-3xl text-center"> <FaCheckCircle></FaCheckCircle></span>
+                                        }
+                                        {
+                                            cls.status === "pending" &&  <button onClick={() => handleApprove(cls)} className="btn btn-primary">Approve</button>
+                                        }
+                                        
+
+
+
                                     </td>
                                     <td>
-                                        <button className="btn btn-error">Reject</button>
+                                        {
+                                            cls.status === "rejected" && <span className="text-red-600 text-3xl text-center"> X </span> }
+                                        {
+                                            cls.status === "approved" && <button disabled className="btn btn-primary">Reject</button>
+                                        }
+                                        {
+                                            cls.status === "pending" && <button onClick={() => handleReject(cls)} className="btn btn-primary">Reject</button>
+                                        }
+
+
                                     </td>
                                 </tr>)
                             }

@@ -12,7 +12,7 @@ const AddClass = () => {
 
 
     const onSubmit = data => {
-        const newData = {class_name:data.class_name, instructor_name: user?.displayName, email:user.email , image: data.class_image, description: data.description, start_date:data.date, available_slots: parseInt(data.slots), duration: data.duration, location: data.location, price: parseFloat(data.price), age_range: data.ageRange}
+        const newData = {class_name:data.class_name, instructor_name: user?.displayName, email:user.email , image: data.class_image, description: data.description, start_date:data.date, available_slots: parseInt(data.slots), duration: data.duration, location: data.location, price: parseFloat(data.price), age_range: data.ageRange, status: "pending"}
         
         axiosSecure.post('/newClass', newData)
                 .then(data => {
