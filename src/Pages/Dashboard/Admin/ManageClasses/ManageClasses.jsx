@@ -23,11 +23,18 @@ const ManageClasses = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     refetch();
-                    Swal.fire(
-                        'Done !',
-                        `${cls.class_name} has added approved.`,
-                        'success'
-                    )
+                    axiosSecure.post('/classes', cls)
+                    .then(data => {
+                        console.log('after posting ', data.data)
+                        if(data.data.insertedId){
+                            Swal.fire(
+                                'Done !',
+                                `${cls.class_name} has added approved added to the class list.`,
+                                'success'
+                            )
+                        }
+                    })
+                    
 
                 }
             })

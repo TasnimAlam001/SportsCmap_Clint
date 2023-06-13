@@ -6,6 +6,7 @@ import useSelectedClass from "../../Hooks/useSelectedClass";
 
 
 const ClassesCard = ({ cls }) => {
+    
 
     const [disabled, setDisabled] = useState(false);
 
@@ -21,6 +22,7 @@ const ClassesCard = ({ cls }) => {
     }
    })
 
+   //TODO: decrise number of slots after selected the class
     const handleSelectedClass = Scls => {
         console.log(Scls);
         if (user && user.email) {
