@@ -60,7 +60,7 @@ const AllUsers = () => {
 
             <div className="p-12  rounded-lg ml-4">
 
-                <p className="text-3xl my-4">Total User ${users.length}</p>
+                <p className="text-3xl my-4">Total User: {users.length}</p>
 
                 <div className="overflow-x-auto">
                     <table className="table w-full">

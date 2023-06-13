@@ -1,8 +1,10 @@
 
 
 const Footer = () => {
+    //TODO: footer design baki
     return (
         <>
+        
             <footer className="footer p-10 bg-neutral text-neutral-content">
                 
                     <div>
