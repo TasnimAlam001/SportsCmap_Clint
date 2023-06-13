@@ -25,7 +25,7 @@ const ManageClasses = () => {
                     refetch();
                     Swal.fire(
                         'Done !',
-                        `${cls.name} has added approved.`,
+                        `${cls.class_name} has added approved.`,
                         'success'
                     )
 
@@ -34,6 +34,38 @@ const ManageClasses = () => {
 
     }
 
+    const handleReject = (cls) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You want to reject ${cls.class_name} class?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reject this !'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`http://localhost:5000/newClass/reject/${cls._id}`, {
+                    method: 'PATCH'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.modifiedCount) {
+                            refetch();
+                            Swal.fire(
+                                'Done !',
+                                `${cls.class_name} has added rejected.`,
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+
+
+    }
 
 
 
@@ -92,23 +124,23 @@ const ManageClasses = () => {
                                     } </td>
 
                                     <td>
-                                        
+
                                         {
-                                            cls.status === "rejected" && <button disabled className="btn btn-primary">Approve</button> }
+                                            cls.status === "rejected" && <button disabled className="btn btn-primary">Approve</button>}
                                         {
                                             cls.status === "approved" && <span className="text-blue-600 text-3xl text-center"> <FaCheckCircle></FaCheckCircle></span>
                                         }
                                         {
-                                            cls.status === "pending" &&  <button onClick={() => handleApprove(cls)} className="btn btn-primary">Approve</button>
+                                            cls.status === "pending" && <button onClick={() => handleApprove(cls)} className="btn btn-primary">Approve</button>
                                         }
-                                        
+
 
 
 
                                     </td>
                                     <td>
                                         {
-                                            cls.status === "rejected" && <span className="text-red-600 text-3xl text-center"> X </span> }
+                                            cls.status === "rejected" && <button disabled className="text-red-600 font-bold ">Rejected</button>}
                                         {
                                             cls.status === "approved" && <button disabled className="btn btn-primary">Reject</button>
                                         }
