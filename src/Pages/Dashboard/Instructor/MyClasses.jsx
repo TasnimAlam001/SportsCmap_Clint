@@ -1,7 +1,9 @@
+import useAuth from "../../../Hooks/useAuth";
 import useNewClass from "../../../Hooks/useNewClass";
 
 
 const MyClasses = () => {
+    const {user} =useAuth();
     const [newClass] = useNewClass();
 
 
@@ -14,7 +16,7 @@ const MyClasses = () => {
 
                 <div className="text-center pb-5">
                     <p className="text-3xl my-4">Total  Classes: {newClass.length}</p>
-                    
+
                 </div>
 
                 <div className="overflow-x-auto">
@@ -52,14 +54,30 @@ const MyClasses = () => {
                                     <td>{cls.instructor_name}</td>
 
                                     <td>${cls.price}</td>
-                                    
+
                                     <td>{
-                                        cls.status? cls.status : "pending"
-                                        } </td>
+                                        cls.status ? cls.status : "pending"
+                                    } </td>
 
                                     <td>
                                         {
-                                            cls.feedback? <></> : "N/A"
+                                            cls.feedback ? <>
+
+                                                {/* You can open the modal using ID.showModal() method */}
+                                                <button className="btn btn-warning" onClick={() => window.my_modal_4.showModal()}>show Feedback</button>
+                                                <dialog id="my_modal_4" className="modal">
+                                                    <form method="dialog" className="modal-box w-11/12 max-w-5xl text-center">
+                                                        <h3 className="font-bold text-lg">Hello! {user.displayName}</h3>
+                                                        <p className="pt-4 text-red-400 text-2xl">{cls.feedback}</p>
+                                                        <div className="modal-action">
+                                                            {/* if there is a button, it will close the modal */}
+                                                            <button className="btn">Okay</button>
+                                                        </div>
+                                                    </form>
+                                                </dialog>
+
+
+                                            </> : "N/A"
                                         }
                                     </td>
                                 </tr>)

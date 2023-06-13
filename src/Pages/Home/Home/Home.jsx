@@ -5,6 +5,7 @@ import PopularInstructor from "../PopularINstructor/PopularInstructor";
 
 
 const Home = () => {
+    //TODO: add extra section
     return (
         <div>
             <Banner></Banner>
