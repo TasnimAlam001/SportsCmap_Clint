@@ -148,8 +148,6 @@ const MySelectedClasses = () => {
                                 </tr>)
                             }
 
-
-
                         </tbody>
                     </table>
                 </div >

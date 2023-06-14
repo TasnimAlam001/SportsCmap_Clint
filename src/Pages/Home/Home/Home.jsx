@@ -7,7 +7,7 @@ import Expect from "./Expect/Expect";
 
 
 const Home = () => {
-    //TODO: add extra section
+ 
     return (
         <div>
             <Banner></Banner>

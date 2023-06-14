@@ -22,12 +22,11 @@ const ClassesCard = ({ cls }) => {
     }
    })
 
-   //TODO: decrise number of slots after selected the class
    
     const handleSelectedClass = Scls => {
         console.log(Scls);
         if (user && user.email) {
-            const selectedClass = { selectedClassId: cls._id, class_name:cls.class_name , instructor_name:cls.instructor_name, image:cls.image, price:cls.price, email: user.email }
+            const selectedClass = { selectedClassId: cls._id, class_name:cls.class_name , instructor_name:cls.instructor_name, image:cls.image, price:cls.price, email: user.email, payment: "pending" }
             fetch('http://localhost:5000/selectedClass', {
                 method: 'POST',
                 headers: {
