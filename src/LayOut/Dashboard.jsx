@@ -12,7 +12,7 @@ const Dashboard = () => {
    
 
 
-    // TODO:njvljv
+   
     const [isInstructor] = useInstructor();
     const [isAdmin] = useAdmin();
     const [isUser] = useUser();

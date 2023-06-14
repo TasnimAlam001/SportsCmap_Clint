@@ -1,13 +1,7 @@
 
 
 
-
-
 const Payment = () => {
-
-
-
-
 
 
     return (
