@@ -17,11 +17,11 @@ const Expect = () => {
     return (
         <div style={{}}  className="mb-40 bg ">
             <SectionTitle heading={"What to Expect"}></SectionTitle>
-            <div className="grid grid-cols-2 md:grid-cols-4 w-2/3 mx-auto gap-4 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:w-2/3 mx-auto gap-4 text-center">
                 {
                     datas.map(d => <>
 
-                        <div className="shadow-2xl p-4  px-8" >
+                        <div className="shadow-2xl p-4  lg:px-8" >
                             <h1 className=" font-bold uppercase mb-3 text-orange-400">{d.name}</h1>
                             <div className="divider" ></div>
                             <p className="pb-4">{d.description}</p>

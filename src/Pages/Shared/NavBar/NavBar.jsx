@@ -53,7 +53,7 @@ const NavBar = () => {
 
     return (
 
-        <div className="navbar fixed z-10 bg-slate-700 opacity-80 text-white lg:px-48">
+        <div className="navbar fixed z-10 bg-slate-700 opacity-80 text-white lg:px-48 w-full">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -63,7 +63,7 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl"><img className="w-[150px] bg-white px-1 rounded-2xl" src={logo} alt="" /></a>
+                <a className="btn btn-ghost normal-case text-xl"><img className="w-[70px] lg:w-[150px] bg-white px-1 rounded-2xl" src={logo} alt="" /></a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 font-bold">
@@ -97,7 +97,7 @@ const NavBar = () => {
                     </>
 
                         : <>
-                            <button className="btn btn-outline text-white btn-ghost"><Link to="/login" > Login</Link></button>
+                            <button className="btn btn-outline text-white btn-ghost"><Link to="/login" >Login</Link></button>
 
                         </>
                 }
