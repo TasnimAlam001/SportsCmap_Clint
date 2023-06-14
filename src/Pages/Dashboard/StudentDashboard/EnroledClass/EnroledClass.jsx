@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import usePayment from "../../../../Hooks/usePayment";
 
 
@@ -8,6 +9,7 @@ const EnroledClass = () => {
 
     return (
         <div className="w-full">
+            <Helmet><title>Sports Camp | User | Enrolled Classes </title></Helmet>
             <div className="p-12  rounded-lg ml-4">
 
                 <div className="text-center pb-5">

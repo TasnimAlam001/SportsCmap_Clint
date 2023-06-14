@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 import Features from "../Features/Features";
 import PopularClasses from "../PopularClasses/PopularClasses";
@@ -10,6 +11,10 @@ const Home = () => {
  
     return (
         <div>
+            <Helmet>
+
+            <title>Sports Summer Camp</title>
+            </Helmet>
             <Banner></Banner>
             <Features></Features>
             <PopularClasses></PopularClasses>

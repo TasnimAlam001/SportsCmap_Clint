@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiousSecure";
 import Swal from "sweetalert2";
 import { FaCheckCircle } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 
 
@@ -111,6 +112,7 @@ const ManageClasses = () => {
 
     return (
         <div className="w-full">
+            <Helmet><title>Sports Camp | Admin | ManageClasses </title></Helmet>
             <div className="p-12  rounded-lg ml-4">
 
                 <div className="text-center pb-5">

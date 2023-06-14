@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import useInstructor from "../../Hooks/useInstructor";
 
 
@@ -5,6 +6,12 @@ const Instructor = () => {
     const [instructor] = useInstructor();
     return (
         <div className="">
+
+            <Helmet>
+
+                <title>Sports Camp | Instructor</title>
+            </Helmet>
+
 
             <div className="overflow-x-auto py-40 w-3/4 mx-auto">
                 <table className="table">

@@ -1,7 +1,7 @@
 import logo from '../../../assets/Logo/SportsCampLogo.png'
 
 const Footer = () => {
-    //TODO: footer design baki
+
     return (
         <>
         

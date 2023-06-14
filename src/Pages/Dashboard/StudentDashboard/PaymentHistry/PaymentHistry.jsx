@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import usePayment from "../../../../Hooks/usePayment";
 
 
@@ -11,6 +12,7 @@ const PaymentHistry = () => {
 
     return (
         <div className="w-full">
+            <Helmet><title>Sports Camp | User | Payment History </title></Helmet>
 
 
             <div className="p-12  rounded-lg ml-4">

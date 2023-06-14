@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import { FaCheckCircle, FaTrashAlt, FaUserSecret, FaUserShield } from "react-icons/fa";
 import useAxiosSecure from "../../../../Hooks/useAxiousSecure";
+import { Helmet } from "react-helmet";
 
 const AllUsers = () => {
     const [axiosSecure]= useAxiosSecure();
@@ -50,7 +51,7 @@ const AllUsers = () => {
 
     }
 
-    //TODO: delete is incomplete
+    
     const handleDelete = user => {
         Swal.fire({
             title: 'Are you sure?',
@@ -84,6 +85,10 @@ const AllUsers = () => {
 
     return (
         <div className="w-full">
+
+            <Helmet>
+            <title>Sports Camp | Admin | Manage Users </title>
+            </Helmet>
 
 
             <div className="p-12  rounded-lg ml-4">

@@ -3,6 +3,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiousSecure";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddClass = () => {
     const { user } = useAuth();
@@ -48,6 +49,7 @@ const AddClass = () => {
 
     return (
         <div className="w-full">
+            <Helmet><title>Sports Camp | Instructor | Add a Class </title></Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full shadow-2xl rounded-lg m-5 ">
                 <div className="hero-content w-full flex-col lg:flex-row-reverse">
                     <div className="card w-1/2 ">
