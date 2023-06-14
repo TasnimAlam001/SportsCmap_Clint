@@ -17,7 +17,7 @@ const ManageClasses = () => {
 
     const handleApprove = (cls) => {
         console.log(cls);
-        fetch(`http://localhost:5000/newClass/approve/${cls._id}`, {
+        fetch(`https://assignment-12-server-gamma-bice.vercel.app/newClass/approve/${cls._id}`, {
             method: 'PATCH'
             
         })
@@ -71,7 +71,7 @@ const ManageClasses = () => {
                     if (result.isConfirmed) {
                         console.log(result.value)
                         const message = result.value;
-                        fetch(`http://localhost:5000/newClass/reject/${cls._id}`, {
+                        fetch(`https://assignment-12-server-gamma-bice.vercel.app/newClass/reject/${cls._id}`, {
                             method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json'
@@ -123,7 +123,7 @@ const ManageClasses = () => {
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         {/* head */}
-                        <thead className="bg-orange-100">
+                        <thead className="bg-orange-400 text-black">
                             <tr>
                                 <th>#</th>
                                 <th>Class</th>

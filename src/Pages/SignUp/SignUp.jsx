@@ -25,8 +25,8 @@ function SignUp() {
 
 
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email, role: "user"}
-                        fetch('http://localhost:5000/users', {
+                        const saveUser = { name: data.name, email: data.email, image:data.photoURL, role: "user"}
+                        fetch('https://assignment-12-server-gamma-bice.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -77,31 +77,31 @@ function SignUp() {
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full max-w-sm">
                         <div className="card-body">
-                            <h1 className="text-center text-3xl font-extrabold">Sign Up</h1>
+                            <h1 className="text-center text-3xl font-extrabold text-black">Sign Up</h1>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-bold">Name</span>
+                                    <span className="label-text font-bold text-black">Name</span>
                                 </label>
                                 <input type="text" placeholder="Name"  {...register("name", { required: true, maxLength: 14 })} className="input input-bordered" />
                                 {errors.name && <span className="text-red-600 font-bold">This field is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-bold">PhotoURL</span>
+                                    <span className="label-text font-bold text-black">PhotoURL</span>
                                 </label>
                                 <input type="text" placeholder="PhotoURL"  {...register("photoURL", { required: true })} className="input input-bordered" />
                                 {errors.photoURL && <span className="text-red-600">This field is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-bold ">Email</span>
+                                    <span className="label-text font-bold text-black">Email</span>
                                 </label>
                                 <input type="email" placeholder="Email" {...register("email", { required: true })} className="input input-bordered" />
                                 {errors.email && <span className="text-red-600">This field is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-bold ">Password</span>
+                                    <span className="label-text font-bold text-black">Password</span>
                                 </label>
                                 <input type="password" placeholder="password" {...register("password", {
                                     required: true,
@@ -119,7 +119,7 @@ function SignUp() {
 
                                 <input className="btn btn-primary" type="submit" value="SignUp" />
                             </div>
-                            <p className='text-center font-bold'><small>Already Have an account? <Link to="/login">LogIn</Link></small></p>
+                            <p className='text-center font-bold text-black'><small>Already Have an account? <Link to="/login">LogIn</Link></small></p>
                             <SocialLogin></SocialLogin>
 
                         </div>

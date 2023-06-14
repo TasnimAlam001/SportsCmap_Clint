@@ -16,7 +16,7 @@ const Instructor = () => {
             <div className="overflow-x-auto py-40 w-3/4 mx-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className="bg-orange-400 font-bold py-3  md:text-2xl">
+                    <thead className="bg-orange-400 text-black font-bold py-3  md:text-2xl">
                         <tr>
                             <th>
                                #

@@ -20,7 +20,7 @@ const SocialLogin = () => {
             const loggedUser = result.user;
             console.log(loggedUser);
             const saveUser = {name: loggedUser.displayName, email: loggedUser.email, role: "user"}
-            fetch('http://localhost:5000/users',{
+            fetch('https://assignment-12-server-gamma-bice.vercel.app/users',{
                             method: 'POST',
                             headers:{
                                 'content-type': 'application/json'
@@ -40,7 +40,7 @@ const SocialLogin = () => {
 
     return (
         <div>
-            <div className="divider"></div>
+            <div className="divider text-black"></div>
             <div className="w-full text-center my-4">
                 <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline font-bold text-blue-950">
                     <FaGoogle></FaGoogle>

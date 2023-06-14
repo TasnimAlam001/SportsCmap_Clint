@@ -20,7 +20,7 @@ const EnroledClass = () => {
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         {/* head */}
-                        <thead className="bg-orange-100">
+                        <thead className="bg-orange-400 text-black">
                             <tr>
                                 <th>#</th>
                                 <th>Class</th>

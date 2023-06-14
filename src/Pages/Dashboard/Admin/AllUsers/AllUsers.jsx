@@ -16,14 +16,15 @@ const AllUsers = () => {
 
     const handleMakeInstructor = (user) => {
         console.log(user);
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://assignment-12-server-gamma-bice.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
                     refetch();
-                    axiosSecure.post('/classes', user)
+                    const newData ={name: user.name, email: user.email, instructor_image: user.image}
+                    axiosSecure.post('/instructor', newData)
                         .then(data => {
                             console.log('after posting ', data.data)
                             if (data.data.insertedId) {
@@ -40,7 +41,7 @@ const AllUsers = () => {
     }
 
     const handleMakeAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://assignment-12-server-gamma-bice.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -70,7 +71,7 @@ const AllUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/users/${user._id}`, {
+                fetch(`https://assignment-12-server-gamma-bice.vercel.app/users/${user._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -104,7 +105,7 @@ const AllUsers = () => {
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         {/* head */}
-                        <thead className="bg-orange-100">
+                        <thead className="bg-orange-400 text-black">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>

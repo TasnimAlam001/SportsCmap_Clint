@@ -17,7 +17,7 @@ const MySelectedClasses = () => {
     const handleDelete = cls => {
         Swal.fire({
             title: 'Are you sure?',
-            text: `You want to delete ${cls.name} from the Selected Class?`,
+            text: `You want to delete ${cls.class_name} from the Selected Class?`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -26,7 +26,7 @@ const MySelectedClasses = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/selectedClass/${cls._id}`, {
+                fetch(`https://assignment-12-server-gamma-bice.vercel.app/selectedClass/${cls._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -35,7 +35,7 @@ const MySelectedClasses = () => {
                             refetch();
                             Swal.fire(
                                 'Deleted!',
-                                `${cls.name} has been deleted from the selected class.`,
+                                `${cls.class_name} has been deleted from the selected class.`,
                                 'success'
                             )
                         }
@@ -73,7 +73,7 @@ const MySelectedClasses = () => {
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         {/* head */}
-                        <thead className="bg-orange-100">
+                        <thead className="bg-orange-400 text-black">
                             <tr>
                                 <th>#</th>
                                 <th>Class</th>

@@ -58,27 +58,27 @@ function Login() {
                     
                     <div className="card flex-shrink-0 w-full ">
                         <div className="card-body">
-                            <h1 className="text-center text-3xl font-extrabold">Let`s LogIn</h1>
+                            <h1 className="text-center text-3xl font-extrabold text-black">Let`s LogIn</h1>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-bold">Email</span>
+                                    <span className="label-text font-bold text-black">Email</span>
                                 </label>
                                 <input type="email" placeholder="Email" name='email' className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font-bold">Password</span>
+                                    <span className="label-text font-bold text-black">Password</span>
                                 </label>
                                 <input type="password" placeholder="password" name='password' className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover font-bold">Forgot password?</a>
+                                    <a href="#" className="label-text-alt link link-hover font-bold text-black">Forgot password?</a>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
 
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
-                            <p className='font-bold text-center'><small>New Here ? <Link to="/signUp">SignUp</Link></small></p>
+                            <p className='font-bold text-center text-black'><small>New Here ? <Link to="/signUp">SignUp</Link></small></p>
 
                             <SocialLogin></SocialLogin>
                             

@@ -7,7 +7,7 @@ const useInstructor = () => {
     // const { isLoading, data: instructor=[] } = useQuery({
     //     queryKey: ['instructor'],
     //     queryFn: async () => {
-    //         const res = await fetch('http://localhost:5000/instructor')
+    //         const res = await fetch('https://assignment-12-server-gamma-bice.vercel.app/instructor')
     //         return res.json();
     //       },
     //   })
@@ -16,7 +16,7 @@ const useInstructor = () => {
     const {data: instructor = [], isLoading: loading, refetch} = useQuery({
         queryKey: ['instructor'],
         queryFn: async() => {
-            const res = await fetch('http://localhost:5000/instructor');
+            const res = await fetch('https://assignment-12-server-gamma-bice.vercel.app/instructor');
             return res.json();
         }
     })

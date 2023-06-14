@@ -5,29 +5,36 @@ import { useState } from "react";
 import useSelectedClass from "../../Hooks/useSelectedClass";
 
 
+
 const ClassesCard = ({ cls }) => {
     
 
     const [disabled, setDisabled] = useState(false);
 
     const { user } = useAuth();
-    const [classes,refetch] = useSelectedClass()
+    const [selectedClass,refetch] = useSelectedClass()
     const navigate = useNavigate()
     const location = useLocation();
 
 
-   classes.map(seletedCls=>{
+
+    selectedClass.map(seletedCls=>{
     if(cls._id ===  seletedCls._id){
         setDisabled(true);
     }
    })
+
+
+//    const isAdmin = useAdmin();
+//    const isInstructor = useInstructor();
+//    const isUser = useUser();
 
    
     const handleSelectedClass = Scls => {
         console.log(Scls);
         if (user && user.email) {
             const selectedClass = { selectedClassId: cls._id, class_name:cls.class_name , instructor_name:cls.instructor_name, image:cls.image, price:cls.price, email: user.email, payment: "pending" }
-            fetch('http://localhost:5000/selectedClass', {
+            fetch('https://assignment-12-server-gamma-bice.vercel.app/selectedClass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -110,7 +117,13 @@ const ClassesCard = ({ cls }) => {
 
 
             </div>
-            <div className="absolute bottom-0 w-full mb-1"><button disabled={disabled} onClick={() => handleSelectedClass(cls)} className="btn btn-outline btn-ghost w-full">Select Class</button></div>
+            <div className="absolute bottom-0 w-full mb-1">
+              
+                
+                    <button disabled={disabled} onClick={() => handleSelectedClass(cls)} className="btn btn-outline btn-ghost w-full text-black">Select Class</button>
+                
+                
+                </div>
 
         </div>
     );
