@@ -10,9 +10,8 @@ import { Elements } from "@stripe/react-stripe-js";
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_PK);
 const MySelectedClasses = () => {
     const [classes, refetch] = useSelectedClass();
-    // const [updateCls, setUpdateCls] = useState('');
-    const total = classes.reduce((sum, item) => item.price + sum, 0);
     const [isOpen, setIsOpen] = useState(false);
+    const [currentClass, setCurrentClass] = useState();
 
     const handleDelete = cls => {
         Swal.fire({
@@ -53,7 +52,9 @@ const MySelectedClasses = () => {
     }
 
 
-    function openModal() {
+    function openModal(cls) {
+        
+        setCurrentClass(cls);
         setIsOpen(true);
     }
 
@@ -64,10 +65,7 @@ const MySelectedClasses = () => {
 
                 <div className="text-center pb-5">
                     <p className="text-3xl my-4">Total Selected Classes: {classes.length}</p>
-                    <div>
-                        <p>Total Amount : ${total}</p>
-                        <span> <button className="btn btn-outline" >Pay</button> </span>
-                    </div>
+                    
                 </div>
 
                 <div className="overflow-x-auto">
@@ -119,20 +117,19 @@ const MySelectedClasses = () => {
                                                 {isOpen && (
                                                     <div className="fixed top-0 left-0 z-10 w-full h-full bg-gray-900 bg-opacity-50">
                                                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md p-6 sm:p-8 md:p-10 lg:p-12 w-1/2">
-                                                            <p>Total amount: ${cls.price}</p>
+                                                            <p>Total amount: ${currentClass.price}</p>
 
                                                             <div>
 
                                                                 <Elements stripe={stripePromise}>
 
-                                                                    <CheckoutForm cls={cls} price={cls.price}></CheckoutForm>
+                                                                    <CheckoutForm cls={currentClass} price={currentClass.price}></CheckoutForm>
 
 
                                                                 </Elements>
 
 
                                                             </div>
-
 
                                                             <button onClick={closeModal} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
                                                                 Close
@@ -144,10 +141,6 @@ const MySelectedClasses = () => {
 
                                             </>
                                         }
-
-
-
-
 
                                     </td>
                                     <td><button onClick={() => handleDelete(cls)} className="btn btn-ghost text-1xl bg-red-600 text-white"><FaTrashAlt></FaTrashAlt></button></td>

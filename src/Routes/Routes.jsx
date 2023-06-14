@@ -14,6 +14,8 @@ import AddClass from "../Pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../Pages/Dashboard/Instructor/MyClasses";
 import ManageClasses from "../Pages/Dashboard/Admin/ManageClasses/ManageClasses";
 import NotFound from "../Componenets/NotFound/NotFound";
+import PaymentHistry from "../Pages/Dashboard/StudentDashboard/PaymentHistry/PaymentHistry";
+import EnroledClass from "../Pages/Dashboard/StudentDashboard/EnroledClass/EnroledClass";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ export const router = createBrowserRouter([
       {
         path:'manageClasses',
         element:<ManageClasses></ManageClasses>
+      },
+      {
+        path:'paymentHistory',
+        element:<PaymentHistry></PaymentHistry>
+      },
+      {
+        path:'enrolledClass',
+        element:<EnroledClass></EnroledClass>
       },
     ]
   },{

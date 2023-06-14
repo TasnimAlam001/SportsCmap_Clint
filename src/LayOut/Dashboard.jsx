@@ -58,8 +58,8 @@ const Dashboard = () => {
                             isUser && <>
 
                                 <li className=""><NavLink to="/dashboard/mySelectedClasses"><FaBookmark></FaBookmark> My Selected Classes</NavLink></li>
-                                <li><NavLink to="/dashboard/home"><FaBookOpen></FaBookOpen> My Enrolled Classes</NavLink></li>
-                                <li><NavLink to="/dashboard/home"><FaWallet></FaWallet> Payment History</NavLink></li>
+                                <li><NavLink to="/dashboard/enrolledClass"><FaBookOpen></FaBookOpen> My Enrolled Classes</NavLink></li>
+                                <li><NavLink to="/dashboard/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
 
 
                             </>

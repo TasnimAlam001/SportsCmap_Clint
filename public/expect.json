@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "New experience",
+        "description": "Prepare to experience the ultimate summer camp"
+    },
+    {
+        "id": 2,
+        "name": "New Friends",
+        "description": "Once you make a friend, that last forever"
+    },
+    {
+        "id": 3,
+        "name": "New Sports",
+        "description": "Football, Cricket and there lots of new sports"
+    },
+    {
+        "id": 4,
+        "name": "New Emotions",
+        "description": "Over a million smiling aces since the start"
+    }
+]
