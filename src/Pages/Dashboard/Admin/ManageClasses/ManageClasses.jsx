@@ -86,7 +86,7 @@ const ManageClasses = () => {
                                     refetch();
                                     Swal.fire(
                                         'Done !',
-                                        `Your feedback is send to the Instructor and ${cls.class_name} has added rejected.`,
+                                        `Your feedback is send to the Instructor and ${cls.class_name} has rejected.`,
                                         'success'
                                     )
                                 }

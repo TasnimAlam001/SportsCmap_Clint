@@ -96,12 +96,8 @@ const CheckoutForm = ({ cls, price }) => {
                     
              })
 
-            axiosSecure.patch(`/selectedClass/${cls._id}`, {
-                payment: "done"
-            })
-            .then(res=>{
-                console.log(res.data)
-            })
+            axiosSecure.delete(`/selectedClass/${cls._id}`)
+            
         }
 
 

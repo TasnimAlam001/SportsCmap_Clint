@@ -1,10 +1,9 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useInstructor from "../Hooks/isInstructor";
 import useAuth from "../Hooks/useAuth";
-import { Children } from "react";
 
 
-const InstructorRoutes = () => {
+const InstructorRoutes = ({ children }) => {
     const { user, loading } = useAuth();
     const [isInstructor, isInstructorLoading]=useInstructor();
     const location = useLocation();
@@ -14,7 +13,7 @@ const InstructorRoutes = () => {
     }
 
     if (user && isInstructor) {
-        return Children;
+        return children;
     }
     return <Navigate to="/" state={{from: location}} replace></Navigate>
 };

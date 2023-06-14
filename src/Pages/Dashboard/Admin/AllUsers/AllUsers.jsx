@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../../Hooks/useAxiousSecure";
 import { Helmet } from "react-helmet";
 
 const AllUsers = () => {
-    const [axiosSecure]= useAxiosSecure();
+    const [axiosSecure] = useAxiosSecure();
 
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
@@ -23,11 +23,17 @@ const AllUsers = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     refetch();
-                    Swal.fire(
-                        'Done !',
-                        `${user.name} has added as an instructor.`,
-                        'success'
-                    )
+                    axiosSecure.post('/classes', user)
+                        .then(data => {
+                            console.log('after posting ', data.data)
+                            if (data.data.insertedId) {
+                                Swal.fire(
+                                    'Done !',
+                                    `${user.name} added as an Instructor.`,
+                                    'success'
+                                )
+                            }
+                        })
                 }
             })
 
@@ -51,7 +57,7 @@ const AllUsers = () => {
 
     }
 
-    
+
     const handleDelete = user => {
         Swal.fire({
             title: 'Are you sure?',
@@ -87,7 +93,7 @@ const AllUsers = () => {
         <div className="w-full">
 
             <Helmet>
-            <title>Sports Camp | Admin | Manage Users </title>
+                <title>Sports Camp | Admin | Manage Users </title>
             </Helmet>
 
 
@@ -118,12 +124,12 @@ const AllUsers = () => {
                                     <td>{user.role}</td>
                                     <td><button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost text-1xl bg-orange-400 text-white">
                                         {
-                                            user.role === 'admin' ? <span className="text-blue-600 text-2xl "> <FaCheckCircle></FaCheckCircle></span>  : <FaUserShield></FaUserShield>
+                                            user.role === 'admin' ? <span className="text-blue-600 text-2xl "> <FaCheckCircle></FaCheckCircle></span> : <FaUserShield></FaUserShield>
                                         }
                                     </button> </td>
                                     <td><button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost text-1xl bg-orange-400 text-white">
                                         {
-                                            user.role === 'instructor' ?  <span className="text-blue-600 text-2xl "> <FaCheckCircle></FaCheckCircle></span>  : <FaUserSecret></FaUserSecret>
+                                            user.role === 'instructor' ? <span className="text-blue-600 text-2xl "> <FaCheckCircle></FaCheckCircle></span> : <FaUserSecret></FaUserSecret>
                                         }
                                     </button> </td>
                                     <td><button onClick={() => handleDelete(user)} className="btn btn-ghost text-1xl bg-red-600 text-white"><FaTrashAlt></FaTrashAlt></button></td>

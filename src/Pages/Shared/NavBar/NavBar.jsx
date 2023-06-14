@@ -13,7 +13,7 @@ const NavBar = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
 
-    //TODO: add helmet
+   
 
     const handleLogOut = () => {
         LogOut()
